@@ -31,12 +31,11 @@ class TestCustomerManager(unittest.TestCase):
     def test_add_purchase_multiple(self):
         cm = CustomerManager()
         name = "Alice"
-        purchase = {'price': 50, 'item': 'banana'}
-        cm.add_purchase(name, purchase)
-        cm.add_purchase(name, purchase)
+        purchase = [{'price': 50, 'item': 'banana'}]
+        cm.add_purchases(name, purchase)
 
         self.assertEqual(
-            {name: [purchase, purchase]},
+            {name: purchase},
             cm.customers
         )
 
