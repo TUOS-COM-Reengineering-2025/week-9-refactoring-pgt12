@@ -43,18 +43,21 @@ class CustomerManager:
     def calculate_shipping_fee(self, purchases):
         heavy_item = False
         for purchase in purchases:
-            if purchase.get('weight', 0) > 20:
-                heavy_item = True
-                break
-        if heavy_item:
-            return 50
-        else:
-            return 20
+            heavy_item = calculate_shipping_fee_for_heavy_items(purchase)
 
-def calculate_shipping_fee_for_heavy_items(purchases):
-    for purchase in purchases:
-        if purchase.get('weight', 0) > 20:
-            return 50
+        return heavy_item
+        #     if purchase.get('weight', 0) > 20:
+        #         heavy_item = True
+        #         break
+        # if heavy_item:
+        #     return 50
+        # else:
+        #     return 20
+
+def calculate_shipping_fee_for_heavy_items(purchase):
+    #for purchase in purchases:
+    if purchase.get('weight', 0) > 20:
+        return 50
     return 20
 
 def calculate_shipping_fee_for_fragile_items(purchases):
