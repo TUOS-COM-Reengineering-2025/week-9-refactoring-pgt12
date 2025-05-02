@@ -42,7 +42,10 @@ class TestCustomerManager(unittest.TestCase):
 
     def test_discount_eligibility(self):
         cm = CustomerManager()
-        cm.add_customer("Bob", [{'price': 600}])
+        #cm.add_customer("Bob", [{'price': 600}])
+        name = "Bob"
+        purchase = [{'price':600}]
+        cm.add_customer(name,  purchase)
 
         # Capture printed output
         captured = io.StringIO()
